@@ -56,3 +56,8 @@ Cypress.Commands.add('gui_setLabelOnIssue', label => {
   cy.contains(label.name).click()
   cy.get('body').click()
 })
+
+Cypress.Commands.add('gui_setMilestoneOnIssue', milestone => {
+  cy.get('.milestone > .title > .js-sidebar-dropdown-toggle').click()
+  cy.contains(milestone.title).click()
+})
