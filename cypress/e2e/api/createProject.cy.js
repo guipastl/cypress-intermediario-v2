@@ -1,6 +1,6 @@
 import { faker } from '@faker-js/faker'
 
-describe('Crate PRoject', () => {
+describe('Crate Project', () => {
   beforeEach(() => cy.api_deleteProjects())
 
   it('successfully', () => {
@@ -14,6 +14,6 @@ describe('Crate PRoject', () => {
           expect(response.status).to.equal(201)
           expect(response.body.name).to.equal(project.name)
           expect(response.body.description).to.equal(project.description)
-        })
+      })
     })
 })

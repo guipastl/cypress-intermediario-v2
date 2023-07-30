@@ -1,7 +1,7 @@
 describe('Logout', () => {
     beforeEach(() => {
         cy.login()
-        cy.visit('/users/sign_in')
+        cy.visit('/')
     })
 
     it('successfully', () => {
