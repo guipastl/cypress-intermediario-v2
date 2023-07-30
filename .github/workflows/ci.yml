@@ -1,7 +1,6 @@
 name: End-to-end tests with Container 🧪
 
 on: push
-  workflow_dispatch:
 
 jobs:
   build:
