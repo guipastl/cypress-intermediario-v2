@@ -13,10 +13,6 @@ jobs:
         run: |
               sudo rit -v
               sudo go version
-    
-jobs:
-  cypress-run:
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
