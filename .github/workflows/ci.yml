@@ -1,6 +1,7 @@
 name: End-to-end tests with Container 🧪
 
 on: push
+  workflow_dispatch:
 
 jobs:
   build:
@@ -8,10 +9,22 @@ jobs:
     container:
       image: docker://wlsf82/gitlab-ce
 
+    steps:
+      - name: Run Commands
+        run: |
+              sudo rit -v
+              sudo go version
+    
+jobs:
   cypress-run:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Cypress run
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: cypress run
         uses: cypress-io/github-action@v5
+        with:
+          build: npm run build
+          start: npm start
