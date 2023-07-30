@@ -8,7 +8,6 @@ jobs:
     container:
       image: docker://wlsf82/gitlab-ce
 
-jobs:
   cypress-run:
     runs-on: ubuntu-22.04
     steps:
