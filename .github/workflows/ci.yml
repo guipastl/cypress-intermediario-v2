@@ -1,6 +1,6 @@
 name: End-to-end tests with Container 🧪
 
-on: [push]
+on: push
   workflow_dispatch:
 
 jobs:
