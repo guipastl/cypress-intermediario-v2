@@ -3,22 +3,18 @@ name: End-to-end tests with Container 🧪
 on: push
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    container:
-      image: docker://wlsf82/gitlab-ce
-
-    steps:
-      - name: Run Commands
-        run: |
-             docker run --publish 80:80 --publish 22:22 --hostname localhost wlsf82/gitlab-ce
-
-      - name: Checkout
-        uses: actions/checkout@v3
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
-      - name: cypress run
-        uses: cypress-io/github-action@v5
-        with:
-          build: npm run build
-          start: npm start
+    compile:
+        name: Compile site assets
+        runs-on: ubuntu-latest
+        steps:
+          - name: Check out the repo
+            uses: actions/checkout@v2
+          - name: Run the build process with Docker
+            uses: addnab/docker-run-action@v3
+            with:
+                image: docker://wlsf82/gitlab-ce:latest
+                options: -v ${{ github.workspace }}:/var/www
+                run: |
+                    composer install
+                    npm install
+                    npm run production
