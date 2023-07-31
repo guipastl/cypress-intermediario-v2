@@ -1,6 +1,8 @@
 name: End-to-end tests with Container 🧪
 
 on: push
+permissions:
+  contents: write
 
 jobs:
     compile:
