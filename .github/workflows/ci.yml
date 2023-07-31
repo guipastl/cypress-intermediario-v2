@@ -11,8 +11,9 @@ jobs:
     steps:
       - name: Run Commands
         run: |
-              sudo rit -v
-              sudo go version
+             composer install
+             npm install
+             npm run production
 
       - name: Checkout
         uses: actions/checkout@v3
